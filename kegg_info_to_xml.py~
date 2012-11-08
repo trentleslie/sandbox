@@ -1,0 +1,30 @@
+#this script takes raw blast output (blastall -m 8) with multiple blast hits per
+#query and reduces it to the top evalue blast hit per query
+#
+#python top_blast_hit_per_scaffold.py [rawblastinput.csv] [tophitblastoutput.csv]
+
+import sys, csv
+
+def organize_kegg(input_list, input_csv, output_csv):
+
+	kegg_list = []
+
+	output = csv.writer(open(output_csv, 'wb'), delimiter='\t')
+
+	for ath_kegg in csv.reader(open(input_list), delimiter='\t'):
+
+		for ath_gene in csv.reader(open(input_csv), delimiter='\t'):
+
+			kegg_list_update = 
+			kegg_list.append(ath_gene, ath_kegg)
+
+	outdict = dict((x.key, x.value) for x in y)
+
+
+input_list = sys.argv[1]
+input_file = sys.argv[2]
+output_file = sys.argv[3]
+
+organize_kegg(input_list, input_file, output_file)
+
+

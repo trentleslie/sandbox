@@ -1,0 +1,102 @@
+#this script takes raw blast output (blastall -m 8) with multiple blast hits per
+#query and reduces it to the top evalue blast hit per query
+#
+#python top_blast_hit_per_scaffold.py [rawblastinput.csv] [tophitblastoutput.csv]
+
+#this script takes a list of desired sequence names and the reference
+#fasta file to create a custom fasta file and raw primer3 input
+#
+#to run:
+#python pull_at_from_html.py [input.html] [output.txt]
+#txt]
+
+import sys, csv
+from lxml import etree
+
+#custom fasta file from list
+def scan_file(input_file, output_file):
+
+	output_file_write = open(output_file,'w')
+
+	for line in open(input_file):  
+
+		regex = re.compile("AT\dG\d\d\d\d\d")
+		regex_results = regex.findall(line)
+		final_regex_results = list(set(regex_results))
+
+		for item in final_regex_results:
+
+			output_string = item + "\n"
+			output_file_write.write(output_string)		
+
+	output_file_write.close()
+
+input_file = sys.argv[1]
+output_file = sys.argv[2]
+
+scan_file(input_file, output_file)
+
+
+import sys, csv
+
+
+def buildxml(input_list, input_file, output_xml):
+
+	ath_gene_list = []
+
+	root = etree.Element("root")
+
+	output = csv.writer(open(outputcsv, 'wb'), delimiter='\t')
+
+	for ath_kegg in csv.reader(open(input_list), delimiter='\t'):
+
+		input_file_list = []
+
+		ath_kegg_csv = ath_kegg + '.csv'
+
+		for ath_gene in csv.reader(open(ath_kegg_csv), delimiter='\t'):
+
+			curr_set = [ath_gene, ath_kegg]
+
+			input_file_list.append(curr_set)
+
+		for ath_gene_kegg_pair in curr_set:
+
+			if ath_gene_kegg_pair[0] in ath_gene_list:
+
+				for element in root.iter():
+					if 
+
+
+		if Query_id in outdict:
+			if Subject_id not in outdict[Query_id][0] and float(e_value) == float(outdict[Query_id][9]):
+					outdict[Query_id][0] = outdict[Query_id][0] + " " + Subject_id
+					hitcount+=1
+			if float(e_value) < float(outdict[Query_id][9]):
+				outdict[Query_id]=current_list
+		else:
+			outdict.update({Query_id:current_list})
+			hitcount+=1
+
+	print "There are " + str(hitcount) + " top blast hit genes."
+
+	for item in outdict:
+		Subject_id = outdict[item][0]
+		percent_identity = outdict[item][1]
+		alignment_length = outdict[item][2]
+		mismatches = outdict[item][3]
+		gap_openings = outdict[item][4]
+		q_start = outdict[item][5]
+		q_end = outdict[item][6]
+		s_start = outdict[item][7]
+		s_end = outdict[item][8]
+		e_value = outdict[item][9]
+		bit_score = outdict[item][10]
+		output.writerow([item, Subject_id, percent_identity, alignment_length, mismatches, gap_openings, q_start, q_end, s_start, s_end, e_value, bit_score])
+
+
+input_list = sys.argv[1]
+input_file = sys.argv[2]
+output_xml = sys.argv[3]
+
+buildxml(input_list, input_file, output_xml)
