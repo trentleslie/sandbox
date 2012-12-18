@@ -34,12 +34,12 @@ def custom_fasta(fasta_list, input_fasta, output_fasta):
 	for cur_record in SeqIO.parse(input_file, "fasta") :
 		#if fasta file sequence name modification is necessary, the
 		#following two lines need to be active
-		#index = cur_record.name.find('|')
-		#new_record_name = cur_record.name[0:index]
+		index = cur_record.name.find('|')
+		new_record_name = cur_record.name[0:index]
 
 		#if fasta file sequence names match the list, the following
 		#line needs to be active
-		new_record_name = cur_record.name
+		#new_record_name = cur_record.name
 
 		cur_sequence = str(cur_record.seq)
 		fasta_dict.update({new_record_name:cur_sequence})
