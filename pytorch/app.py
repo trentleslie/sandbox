@@ -16,8 +16,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.fc1 = nn.Linear(4, 10)
-        self.fc2 = nn.Linear(10, 3)
+        self.fc1 = nn.Linear(4, 100)
+        self.fc2 = nn.Linear(100, 3)
 
     def forward(self, x):
         x = torch.relu(self.fc1(x))

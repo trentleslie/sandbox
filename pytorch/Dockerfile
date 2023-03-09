@@ -2,16 +2,10 @@
 FROM pytorch/pytorch:latest
 
 # Install additional dependencies
-RUN pip install torch-geometric
+RUN pip install torch-geometric torchvision scikit-learn
 
 # Set the working directory
 WORKDIR /app
-
-# Copy the requirements file into the container
-COPY requirements.txt .
-
-# Install the required packages
-RUN pip install -r requirements.txt
 
 # Copy the application code into the container
 COPY . .
