@@ -1,3 +1,13 @@
+# images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.tif
+*.webp
+
 # API key
 api_key.py
 
