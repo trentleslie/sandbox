@@ -27,6 +27,10 @@ class Net(nn.Module):
 # Create an instance of the neural network
 net = Net()
 
+# Move the model to the GPU if available
+if torch.cuda.is_available():
+    net.cuda()
+
 # Define the loss function and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr=0.1)
